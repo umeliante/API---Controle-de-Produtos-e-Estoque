@@ -35,3 +35,19 @@ def cadastrar_produto(nome, categoria, preco, quantidade):
             cursor.close()
             conexao.commit()
 cadastrar_produto(nome="chinelo", categoria="kenner", preco=100, quantidade=2)
+
+def listar_produtos():
+    conexao, cursor = conector()
+    if conexao:
+        try:
+            cursor.execute(
+                "SELECT * FROM produtos"
+                )
+            return cursor.fetchall()
+        except Exception as erro:
+            print(f"Erro ao listar produtos {erro}")
+            return [] 
+        finally:
+            cursor.close()
+            conexao.commit()
+
