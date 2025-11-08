@@ -34,7 +34,6 @@ def cadastrar_produto(nome, categoria, preco, quantidade):
         finally:
             cursor.close()
             conexao.commit()
-cadastrar_produto(nome="chinelo", categoria="kenner", preco=100, quantidade=2)
 
 def listar_produtos():
     conexao, cursor = conector()
