@@ -33,3 +33,11 @@ def listar_produtos():
         )
     return{"produtos": lista}
 
+@app.delete("/produtos/{id_produtos}")
+def deletar_produtos(id_produtos: int):
+    produtos = funcao.buscar_produtos(id_produtos)
+    if produtos:
+        funcao.deletar_produtos(id_produtos)
+        return {"mensagem": "produto excluído com sucesso!"}
+    else:
+        return {"erro:": "produto não encontrado"}

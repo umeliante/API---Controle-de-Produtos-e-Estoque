@@ -65,3 +65,34 @@ def atualizar_produto(id_produto, nova_nota):
             cursor.close()
             conexao.commit()
 atualizar_produto(id_produto=1, nova_nota=150)
+
+def deletar_produto(id_produtos):
+    conexao, cursor = conector()
+    if conexao:
+        try:
+            cursor.execute(
+                "DELETE FROM produtos WHERE id = %s", (id_produtos,)
+                )
+            conexao.commit()
+        except Exception as erro:
+            print(f"Erro ao deletar o produto {erro}")
+   
+        finally:
+            cursor.close()
+            conexao.commit()
+
+def buscar_produtos(id_produtos):
+    conexao, cursor = conector()
+    if conexao:
+        try:
+            cursor.execute(
+                "SELECT * FROM produtos WHERE id = %s", (id_produtos,)
+                )
+            return cursor.fetchone()
+        except Exception as erro:
+            print(f"Erro ao buscar o produto {erro}")
+            return []
+        finally:
+            cursor.close()
+            conexao.commit()
+
