@@ -34,16 +34,16 @@ def listar_produtos():
     return{"produtos": lista}
 
 @app.delete("/produtos/{id_produtos}")
-def deletar_produtos(id_produtos: int):
+def deletar_produto(id_produtos: int):
     produtos = funcao.buscar_produtos(id_produtos)
     if produtos:
-        funcao.deletar_produtos(id_produtos)
+        funcao.deletar_produto(id_produtos)
         return {"mensagem": "produto excluído com sucesso!"}
     else:
         return {"erro:": "produto não encontrado"}
 
 @app.put("/produtos/{id_produtos}")
-def atulizar_produto(id_produtos: int, nova_quantidade: float):
+def atualizar_produto(id_produtos: int, nova_quantidade: float):
     produtos = funcao.buscar_produtos(id_produtos)
     if produtos:
         funcao.atualizar_produto(id_produtos, nova_quantidade)
