@@ -50,12 +50,12 @@ def listar_produtos():
             cursor.close()
             conexao.commit()
 
-def atualizar_produto(id_produto, nova_nota):
+def atualizar_produto(id_produtos, nova_quantidade):
     conexao, cursor = conector()
     if conexao:
         try:
             cursor.execute(
-                "UPDATE produtos SET preco = %s WHERE id = %s", (nova_nota, id_produto)
+                "UPDATE produtos SET quantidade = %s WHERE id = %s", (nova_quantidade, id_produtos)
                 )
             conexao.commit()
         except Exception as erro:
